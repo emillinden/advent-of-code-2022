@@ -5,7 +5,7 @@ let [r, n] = z.split("\n\n");
 r = r.split("\n").map((a) => a.match(/.{1,4}/g).map((a) => a.trim().replace(/[^a-zA-Z0-9]/g, "")));
 n = n.split("\n");
 
-// Not too satisfied with this solution, but it 'll do
+// Not too satisfied with this, but it'll do
 const x = [];
 for (let i = 0; i < r[r.length - 1].length; i++) {
     x[i] = [];
@@ -18,9 +18,8 @@ for (let i = 0; i < r[r.length - 1].length; i++) {
     }
 }
 
-console.log(n[1]);
 function p1() {
-    const y = x.map((a) => a.slice()); // TIL you can't use y=[...x] on multidimensional arrays (it'll be a ref) ¯\_(ツ)_/¯
+    const y = x.map((a) => a.slice()); // TIL you can't use y=[...x] on multidimensional arrays (it'll still be a ref) ¯\_(ツ)_/¯
     for (let i = 0; i < n.length; i++) {
         const [q, f, t] = n[i].match(/\d+/g).map(Number);
         for (let j = 0; j < q; j++) {
