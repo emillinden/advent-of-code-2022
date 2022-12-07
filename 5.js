@@ -2,21 +2,12 @@ const fs = require("fs");
 const z = fs.readFileSync("input/5.txt", "utf-8");
 let [r, n] = z.split("\n\n");
 
-r = r.split("\n").map((a) => a.match(/.{1,4}/g).map((a) => a.trim().replace(/[^a-zA-Z0-9]/g, "")));
+r = r.split("\n").map((a) => a.match(/.{1,4}/g).map((a) => a.trim().replace(/[^A-Z]/g, "")));
 n = n.split("\n");
 
-// Not too satisfied with this, but it'll do
-const x = [];
-for (let i = 0; i < r[r.length - 1].length; i++) {
-    x[i] = [];
-    for (let j = 0; j < r.length; j++) {
-        if (r[j][i] === "") {
-            x[i].shift();
-        } else {
-            x[i].push(r[j][i]);
-        }
-    }
-}
+// "Improvement" from last commit.
+//Not actually an improvement, but it looks cooler (and is also impossible to understand)
+const x = r[r.length - 1].map((_, i) => r.reduce((c, o) => o[i] !== "" ? [...c, o[i]] : c, []));
 
 function p1() {
     const y = x.map((a) => a.slice()); // TIL you can't use y=[...x] on multidimensional arrays (it'll still be a ref) ¯\_(ツ)_/¯
