@@ -1,5 +1,5 @@
 const fs = require("fs");
-const s = fs.readFileSync("input/1.txt", "utf-8").split(/\n/);
+const s = fs.readFileSync("input/1.txt", "utf-8").split("\n");
 
 function d() {
     let v = [];
